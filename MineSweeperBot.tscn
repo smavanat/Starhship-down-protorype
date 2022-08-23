@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Mine-Sweeper bot.png" type="Texture" id=1]
+[ext_resource path="res://MineSweeperBot.gd" type="Script" id=2]
+[ext_resource path="res://PlayerDetectionZone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://WanderController.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 110.328
+
+[node name="MineSweeperBot" type="KinematicBody2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 3 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+shape = SubResource( 1 )
+
+[node name="WanderController" parent="." instance=ExtResource( 4 )]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[editable path="PlayerDetectionZone"]
